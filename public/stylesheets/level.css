@@ -9,8 +9,9 @@ body {
 }
 .grid {
   display: grid;
-  grid-template-columns: 20vh 20vh 20vh 20vh;
-  grid-template-rows: 20vh 20vh 20vh 20vh;
+  grid-template-columns: repeat(var(--r), 20vh);
+  grid-template-rows: repeat(var(--r), 20vh);
+
   place-items: center;
   align-content: center;
 }
