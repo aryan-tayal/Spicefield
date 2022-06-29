@@ -1,5 +1,6 @@
 const express = require("express");
 const app = express();
+const ejsMate = require("ejs-mate");
 const mongoose = require("mongoose");
 const Level = require("./Level");
 
@@ -14,6 +15,7 @@ mongoose.connection.once("open", () => console.log("DB connected"));
 const path = require("path");
 const res = require("express/lib/response");
 
+app.engine("ejs", ejsMate);
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
 
@@ -28,7 +30,6 @@ app.get("/levels", async (req, res) => {
 
 app.get("/levels/:id", async (req, res) => {
   const level = await Level.findById(req.params.id);
-  console.log(level);
   res.render("levels/show", { level });
 });
 
