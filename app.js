@@ -13,11 +13,11 @@ mongoose.connection.on(
 mongoose.connection.once("open", () => console.log("DB connected"));
 
 const path = require("path");
-const res = require("express/lib/response");
 
 app.engine("ejs", ejsMate);
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
+app.use(express.static(path.join(__dirname, "public")));
 
 app.get("/", (req, res) => {
   res.render("home");
@@ -38,6 +38,7 @@ app.get("/makelevel", async (req, res) => {
     number: Math.floor(Math.random() * 10) + 1,
     difficulty: Math.floor(Math.random() * 100) + 1,
     grid: Math.floor(Math.random() * 5) + 1,
+    correct: [1, 3, 5, 6, 9],
   });
   await level.save();
   res.send(level);

@@ -5,6 +5,7 @@ const LevelSchema = new Schema({
   number: Number,
   grid: Number,
   difficulty: Number,
+  correct: Array,
 });
 
 module.exports = mongoose.model("Level", LevelSchema);

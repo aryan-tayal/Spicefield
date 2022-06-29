@@ -1,0 +1,107 @@
+html,
+body {
+  height: 100%;
+  width: 100%;
+  display: grid;
+  place-items: center;
+  background: #e6a8be;
+  overflow: hidden;
+}
+.grid {
+  display: grid;
+  grid-template-columns: 20vh 20vh 20vh 20vh;
+  grid-template-rows: 20vh 20vh 20vh 20vh;
+  place-items: center;
+  align-content: center;
+}
+.candy {
+  cursor: pointer;
+  --d: 18vh;
+  height: var(--d);
+  width: var(--d);
+  border-radius: 50rem;
+  background-color: #f7f7f7;
+  position: relative;
+  overflow: hidden;
+  box-shadow: inset 6px 5px 5px 2px rgba(255, 255, 255, 0.25),
+    inset 4px 2px 5px 0px rgba(2, 99, 116, 0.39),
+    2px 1px 2px 1px rgba(0, 0, 0, 0.57), 1px 1px 2px 1px #fff;
+  animation: rotate 0.8s linear infinite;
+}
+.overlay {
+  position: absolute;
+  z-index: 10;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: #000;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+.candy.clicked {
+  animation: rotate 0.8s linear infinite, pulse 0.3s linear 1;
+}
+.candy.clicked .overlay {
+  opacity: 1;
+}
+.red:nth-of-type(1) {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: calc(var(--d) / 5) solid transparent;
+  border-right: calc(var(--d) / 5) solid transparent;
+  border-bottom: calc(var(--d) / 2) solid #b53433;
+}
+.red:nth-of-type(2) {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 0;
+  height: 0;
+  border-top: calc(var(--d) / 5) solid transparent;
+  border-bottom: calc(var(--d) / 5) solid transparent;
+  border-right: calc(var(--d) / 2) solid #b53433;
+}
+.red.red:nth-of-type(3) {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: calc(var(--d) / 5) solid transparent;
+  border-right: calc(var(--d) / 5) solid transparent;
+  border-top: calc(var(--d) / 2) solid #b53433;
+}
+.red:nth-of-type(4) {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 0;
+  height: 0;
+  border-top: calc(var(--d) / 5) solid transparent;
+  border-bottom: calc(var(--d) / 5) solid transparent;
+  border-left: calc(var(--d) / 2) solid #b53433;
+}
+.correct img {
+  position: absolute;
+  z-index: 5;
+  height: 150px;
+  mix-blend-mode: lighten;
+}
+@keyframes rotate {
+  to {
+    transform: rotate(360deg);
+  }
+}
+@keyframes pulse {
+  40% {
+    transform: scale(1.4);
+  }
+}
