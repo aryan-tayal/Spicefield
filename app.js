@@ -12,6 +12,7 @@ mongoose.connection.on(
 mongoose.connection.once("open", () => console.log("DB connected"));
 
 const path = require("path");
+const res = require("express/lib/response");
 
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
@@ -19,12 +20,24 @@ app.set("views", path.join(__dirname, "views"));
 app.get("/", (req, res) => {
   res.render("home");
 });
+
 app.get("/levels", async (req, res) => {
   const levels = await Level.find({});
-  res.send(levels);
+  res.render("levels/index", { levels });
 });
+
+app.get("/levels/:id", async (req, res) => {
+  const level = await Level.findById(req.params.id);
+  console.log(level);
+  res.render("levels/show", { level });
+});
+
 app.get("/makelevel", async (req, res) => {
-  const level = new Level({ number: Math.floor(Math.random()*10)+1, difficulty: Math.floor(Math.random()*100)+1, grid: Math.floor(Math.random()*5)+1 });
+  const level = new Level({
+    number: Math.floor(Math.random() * 10) + 1,
+    difficulty: Math.floor(Math.random() * 100) + 1,
+    grid: Math.floor(Math.random() * 5) + 1,
+  });
   await level.save();
   res.send(level);
 });
