@@ -8,21 +8,25 @@
   <div id="timerText"></div>
 </div>
 <div id="winModal" class="modal">
-  <h3>You Won</h3>
-  <p>Good job</p>
-  <form action="/levels" method="POST">
-    <input type="text" name="levelId" value="<%= level._id %>" />
-    <button id="winModalButton">Next Level</button>
-  </form>
-</div>
-<div id="lostModal" class="modal">
-  <h3>You Lost</h3>
-  <p>Better Luck Next Time</p>
-  <button id="lostModalButton">Retry</button>
-</div>
+  <div class="modal-body">
+    <h3>You Won</h3>
+    <p>Good job</p>
+    <form action="/levels" method="POST">
+      <input type="text" name="levelId" value="<%= level._id %>" />
+      <button id="winModalButton">Next Level</button>
+    </form>
+  </div>
+  <div id="lostModal" class="modal">
+    <div class="modal-body">
+      <h3>You Lost</h3>
+      <p>Better Luck Next Time</p>
+      <button id="lostModalButton">Retry</button>
+    </div>
+  </div>
 
-<script>
-  const gridNumber = "<%- level.grid %>";
-  const correct = "<%- level.correct %>";
-  const time = "<%- level.time %>";
-</script>
+  <script>
+    const gridNumber = "<%- level.grid %>";
+    const correct = "<%- level.correct %>";
+    const time = "<%- level.time %>";
+  </script>
+</div>

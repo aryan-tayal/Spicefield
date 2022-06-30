@@ -40,7 +40,7 @@ const gameOver = (result) => {
   console.log(result);
   if (result === "lost") {
     console.log("game lost");
-    // lostModal.classList.add("show");
+    lostModal.classList.add("show");
   } else if (result === "won") {
     console.log("game won");
     winModal.classList.add("show");

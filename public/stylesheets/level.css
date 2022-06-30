@@ -114,13 +114,44 @@ h2 {
 .modal {
   height: 100vh;
   width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background-color: #f7f7f766;
+  backdrop-filter: blur(5px);
   position: fixed;
   top: 0;
   left: 0;
   opacity: 0;
   pointer-events: none;
   visibility: hidden;
+}
+.modal-body {
+  text-align: center;
+}
+.modal-body h3 {
+  font-family: "Emilys Candy", cursive;
+  color: #ce1483;
+  text-shadow: 0 0 10px #ce1483;
+  font-size: 4.5rem;
+}
+.modal p {
+  margin-bottom: 20px;
+  font-size: 1.5rem;
+  font-weight: 800;
+}
+.modal button {
+  background-color: #ce1483;
+  border-radius: 1rem;
+  color: #fff;
+  padding: 10px 20px;
+  font-size: 1.5rem;
+  cursor: pointer;
+  border: none;
+  transition:box-shadow 0.3s ease;
+}
+.modal button:hover {
+  box-shadow: 0 0 10px 0 #ce1483;
 }
 .modal.show {
   opacity: 1;
