@@ -1,4 +1,8 @@
 const grid = document.querySelector(".grid");
+const winModal = document.querySelector("#winModal");
+const lostModal = document.querySelector("#lostModal");
+const winModalButton = document.querySelector("#winModalButton");
+
 const srcs = [
   "/imgs/foot-both.png",
   "/imgs/foot-left.png",
@@ -29,15 +33,30 @@ const createGrid = () => {
 
 createGrid();
 
+lostModalButton.addEventListener("click", () => window.location.reload());
+
+const gameOver = (result) => {
+  console.log("game over");
+  console.log(result);
+  if (result === "lost") {
+    console.log("game lost");
+    lostModal.classList.add("show");
+  } else if (result === "won") {
+    console.log("game won");
+    winModal.classList.add("show");
+  }
+};
+
 const createTimer = () => {
   let timerValue = time;
   let x = setInterval(function () {
     timerValue--;
     document.getElementById("demo").innerHTML = timerValue;
-    if (timerValue < 0) {
+    if (timerValue === 0) {
       clearInterval(x);
       document.getElementById("demo").innerHTML =
         '<span class="text-danger">Over</span';
+      gameOver("lost");
     }
   }, 1000);
 };
@@ -49,8 +68,9 @@ const correctClick = (c) => {
   if (
     Array.from(document.querySelectorAll(".clicked")).length ===
     correctNumbers.length
-  )
-    console.log("game over");
+  ) {
+    gameOver("won");
+  }
 };
 
 Array.from(document.querySelectorAll(".correct")).map((c) => {

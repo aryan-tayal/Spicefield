@@ -3,6 +3,16 @@
 <h3>Difficulty <%=level.difficulty %></h3>
 <div class="grid" style="--r: <%= level.grid %>"></div>
 <div id="demo"></div>
+<div id="winModal" class="modal">
+  <h3>You Won</h3>
+  <p>Good job</p>
+  <button id="winModalButton">Next Level</button>
+</div>
+<div id="lostModal" class="modal">
+  <h3>You Lost</h3>
+  <p>Better Luck Next Time</p>
+  <button id="lostModalButton">Retry</button>
+</div>
 
 <script>
   const gridNumber = "<%- level.grid %>";
