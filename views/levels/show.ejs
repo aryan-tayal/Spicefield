@@ -1,9 +1,11 @@
 <%layout('layouts/boilerplate')%>
 <h1>Level <%= level.number %></h1>
 <h3>Difficulty <%=level.difficulty %></h3>
-<div class="grid" style="--r:<%= level.grid %>"></div>
+<div class="grid" style="--r: <%= level.grid %>"></div>
+<div id="demo"></div>
 
 <script>
   const gridNumber = "<%- level.grid %>";
   const correct = "<%- level.correct %>";
+  const time = "<%- level.time %>";
 </script>

@@ -19,6 +19,7 @@ const seedDB = async () => {
       difficulty: Math.floor(Math.random() * 100) + 1,
       grid: levelInfo[i].grid,
       correct: levelInfo[i].correct,
+      time: levelInfo[i].time,
     });
     await level.save();
   }

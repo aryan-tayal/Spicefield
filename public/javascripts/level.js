@@ -28,6 +28,21 @@ const createGrid = () => {
 
 createGrid();
 
+const createTimer = () => {
+  let timerValue = time;
+  let x = setInterval(function () {
+    timerValue--;
+    document.getElementById("demo").innerHTML = timerValue;
+    if (timerValue < 0) {
+      clearInterval(x);
+      document.getElementById("demo").innerHTML =
+        '<span class="text-danger">Over</span';
+    }
+  }, 1000);
+};
+
+createTimer();
+
 const correctClick = (c) => {
   c.classList.add("clicked");
 };
