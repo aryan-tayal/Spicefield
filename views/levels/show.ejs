@@ -6,7 +6,9 @@
 <div id="winModal" class="modal">
   <h3>You Won</h3>
   <p>Good job</p>
-  <button id="winModalButton">Next Level</button>
+  <form action="/levels" method="POST">
+    <button id="winModalButton">Next Level</button>
+  </form>
 </div>
 <div id="lostModal" class="modal">
   <h3>You Lost</h3>

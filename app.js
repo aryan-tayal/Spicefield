@@ -18,6 +18,7 @@ app.engine("ejs", ejsMate);
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
 app.use(express.static(path.join(__dirname, "public")));
+app.use(express.urlencoded({ extended: true }));
 
 app.get("/", (req, res) => {
   res.render("home");
@@ -27,21 +28,16 @@ app.get("/levels", async (req, res) => {
   const levels = await Level.find({});
   res.render("levels/index", { levels });
 });
-
+app.post("/levels", async (req, res) => {
+  const currentLevel = await Level.find({ locked: false });
+  const nextLevel = await Level.find({ number: currentLevel[0].number + 1 });
+  nextLevel.locked = false;
+  await nextLevel.save();
+  res.redirect(`/levels/${nextLevel[0]._id}`);
+});
 app.get("/levels/:id", async (req, res) => {
   const level = await Level.findById(req.params.id);
   res.render("levels/show", { level });
-});
-
-app.get("/makelevel", async (req, res) => {
-  const level = new Level({
-    number: Math.floor(Math.random() * 10) + 1,
-    difficulty: Math.floor(Math.random() * 100) + 1,
-    grid: Math.floor(Math.random() * 5) + 1,
-    correct: [1, 3, 5, 6, 9],
-  });
-  await level.save();
-  res.send(level);
 });
 
 app.listen(3000, () => {

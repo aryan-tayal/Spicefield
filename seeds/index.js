@@ -20,6 +20,7 @@ const seedDB = async () => {
       grid: levelInfo[i].grid,
       correct: levelInfo[i].correct,
       time: levelInfo[i].time,
+      locked: levelInfo[i].locked,
     });
     await level.save();
   }
