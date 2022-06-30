@@ -7,9 +7,10 @@ const srcs = [
   "/imgs/hand-left.png",
 ];
 
+let correctNumbers = [];
+correct.split(",").forEach((c) => correctNumbers.push(parseInt(c)));
+
 const createGrid = () => {
-  let correctNumbers = [];
-  correct.split(",").forEach((c) => correctNumbers.push(parseInt(c)));
   for (
     let i = 1;
     i <= new Array(parseInt(gridNumber * gridNumber)).length;
@@ -45,6 +46,11 @@ createTimer();
 
 const correctClick = (c) => {
   c.classList.add("clicked");
+  if (
+    Array.from(document.querySelectorAll(".clicked")).length ===
+    correctNumbers.length
+  )
+    console.log("game over");
 };
 
 Array.from(document.querySelectorAll(".correct")).map((c) => {
