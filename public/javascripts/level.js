@@ -8,6 +8,8 @@ const srcs = [
 ];
 
 const createGrid = () => {
+  let correctNumbers = [];
+  correct.split(",").forEach((c) => correctNumbers.push(parseInt(c)));
   for (
     let i = 1;
     i <= new Array(parseInt(gridNumber * gridNumber)).length;
@@ -19,7 +21,7 @@ const createGrid = () => {
     for (let j = 0; j < new Array(4).length; j++) {
       candy.innerHTML += '<div class="red"></div>';
     }
-    candy.innerHTML+='<div class="overlay"></div>'
+    candy.innerHTML += '<div class="overlay"></div>';
     grid.appendChild(candy);
   }
 };
