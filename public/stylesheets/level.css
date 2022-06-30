@@ -1,11 +1,16 @@
-html,
 body {
-  height: 100%;
-  width: 100%;
-  display: grid;
-  place-items: center;
-  background: #e6a8be;
-  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+}
+h1 {
+  font-family: "Emilys Candy", cursive;
+  font-size: 6rem;
+}
+h2 {
+  font-size: 1.6rem;
+  text-align: center;
 }
 .grid {
   display: grid;
@@ -35,7 +40,7 @@ body {
   left: 0;
   height: 100%;
   width: 100%;
-  background-color: #000;
+  background-color: #e4c1f9;
   opacity: 0;
   transition: opacity 0.2s ease;
 }
@@ -54,7 +59,7 @@ body {
   height: 0;
   border-left: calc(var(--d) / 5) solid transparent;
   border-right: calc(var(--d) / 5) solid transparent;
-  border-bottom: calc(var(--d) / 2) solid #b53433;
+  border-bottom: calc(var(--d) / 2) solid #ef3054;
 }
 .red:nth-of-type(2) {
   position: absolute;
@@ -65,7 +70,7 @@ body {
   height: 0;
   border-top: calc(var(--d) / 5) solid transparent;
   border-bottom: calc(var(--d) / 5) solid transparent;
-  border-right: calc(var(--d) / 2) solid #b53433;
+  border-right: calc(var(--d) / 2) solid #ef3054;
 }
 .red.red:nth-of-type(3) {
   position: absolute;
@@ -76,7 +81,7 @@ body {
   height: 0;
   border-left: calc(var(--d) / 5) solid transparent;
   border-right: calc(var(--d) / 5) solid transparent;
-  border-top: calc(var(--d) / 2) solid #b53433;
+  border-top: calc(var(--d) / 2) solid #ef3054;
 }
 .red:nth-of-type(4) {
   position: absolute;
@@ -87,7 +92,7 @@ body {
   height: 0;
   border-top: calc(var(--d) / 5) solid transparent;
   border-bottom: calc(var(--d) / 5) solid transparent;
-  border-left: calc(var(--d) / 2) solid #b53433;
+  border-left: calc(var(--d) / 2) solid #ef3054;
 }
 .correct img {
   position: absolute;
@@ -121,4 +126,25 @@ body {
   opacity: 1;
   pointer-events: all;
   visibility: visible;
+}
+#timer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: #fff;
+  color: #ce1483;
+  text-shadow: 0 0 10px #ce1483;
+  width: 150px;
+  height: 150px;
+  border-bottom-right-radius: 50rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#timerText {
+  text-align: center;
+  font-size: 2rem;
+  transform: rotate(-45deg);
+  margin-right: 30px;
+  margin-bottom: 30px;
 }

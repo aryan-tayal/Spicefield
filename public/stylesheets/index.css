@@ -18,7 +18,6 @@ body {
   position: absolute;
   background-color: #ffffffb9;
   border: 1px #fff solid;
-  text-shadow: 0 0 10px #ce1483;
   backdrop-filter: blur(4px);
   display: inline-block;
   font-size: 2rem;
@@ -29,13 +28,13 @@ body {
 }
 .level.disabled {
   pointer-events: none;
-  /* opacity: 0.5; */
 }
 .level a {
   display: block;
   padding: 30px 40px;
   font-family: "Emilys Candy", cursive;
   color: #ce1483;
+  text-shadow: 0 0 10px #ce1483;
   text-decoration: none;
 }
 

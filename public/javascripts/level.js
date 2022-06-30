@@ -40,7 +40,7 @@ const gameOver = (result) => {
   console.log(result);
   if (result === "lost") {
     console.log("game lost");
-    lostModal.classList.add("show");
+    // lostModal.classList.add("show");
   } else if (result === "won") {
     console.log("game won");
     winModal.classList.add("show");
@@ -50,14 +50,13 @@ const gameOver = (result) => {
 const createTimer = () => {
   let timerValue = time;
   let x = setInterval(function () {
-    timerValue--;
-    document.getElementById("demo").innerHTML = timerValue;
+    document.getElementById("timerText").innerHTML = timerValue;
     if (timerValue === 0) {
       clearInterval(x);
-      document.getElementById("demo").innerHTML =
-        '<span class="text-danger">Over</span';
+      document.getElementById("timerText").innerHTML = "0";
       gameOver("lost");
     }
+    timerValue--;
   }, 1000);
 };
 

@@ -3,3 +3,8 @@
   margin: 0;
   font-family: "Life Savers", sans-serif;
 }
+body {
+  height: 100vh;
+  background-image: url("/imgs/bg.svg");
+  background-repeat: no-repeat;
+}
