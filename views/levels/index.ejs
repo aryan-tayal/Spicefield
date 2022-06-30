@@ -1,7 +1,44 @@
-<%layout('layouts/boilerplate')%>
-<h1>All Campgrounds</h1>
-<ul>
-  <% for(let level of levels){%>
-  <li><a href="/levels/<%= level._id %> " class="<%= level.locked ? "disable" : "" %>" ><%= level.number %> </a></li>
-  <% } %>
-</ul>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Welcome to Sugarworld</title>
+    <link rel="stylesheet" href="/stylesheets/index.css" />
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+  </head>
+  <body>
+    <div id="heading">
+      <h2>Welcome</h2>
+      <p>to</p>
+      <h1>Sugarworld</h1>
+    </div>
+    <div id="levelContainer">
+      <% for(let level of levels){%>
+      <div
+        class="level <%= level.locked ? "disabled" : "" %>"
+      >
+        <a href="/levels/<%= level._id %> "
+          ><%= level.locked?"?":level.number %>
+        </a>
+      </div>
+      <% } %>
+    </div>
+    <script>
+      document.querySelectorAll(".level").forEach((c) =>
+        setInterval(() => {
+          c.style.borderRadius = `${Math.floor(Math.random() * 50) + 50}% ${
+            Math.floor(Math.random() * 50) + 50
+          }% ${Math.floor(Math.random() * 50) + 50}% ${
+            Math.floor(Math.random() * 50) + 50
+          }% / ${Math.floor(Math.random() * 50) + 50}% ${
+            Math.floor(Math.random() * 50) + 50
+          }% ${Math.floor(Math.random() * 50) + 50}% ${
+            Math.floor(Math.random() * 50) + 50
+          }%`;
+        }, 500)
+      );
+    </script>
+  </body>
+</html>

@@ -1,0 +1,86 @@
+body {
+  height: 100vh;
+  background-image: url("/imgs/bg.svg");
+  background-repeat: no-repeat;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#levelContainer {
+  position: relative;
+  height: 80vh;
+  width: 80vh;
+  border-radius: 50rem;
+  border: 1px solid #fff;
+  animation: rotate 5s ease infinite;
+}
+.level {
+  position: absolute;
+  background-color: #ffffffb9;
+  border: 1px #fff solid;
+  text-shadow: 0 0 10px #ce1483;
+  backdrop-filter: blur(4px);
+  display: inline-block;
+  font-size: 2rem;
+  border-radius: 50rem;
+  font-weight: 800;
+  transition: border-radius 0.3s;
+  animation: rotate 5s ease infinite reverse;
+}
+.level.disabled {
+  pointer-events: none;
+  /* opacity: 0.5; */
+}
+.level a {
+  display: block;
+  padding: 30px 40px;
+  font-family: "Emilys Candy", cursive;
+  color: #ce1483;
+  text-decoration: none;
+}
+
+.level:nth-of-type(1) {
+  top: -30px;
+  left: calc(50% - 40px);
+}
+.level:nth-of-type(2) {
+  right: -40px;
+  top: 25%;
+}
+.level:nth-of-type(3) {
+  right: 40px;
+  bottom: 2%;
+}
+.level:nth-of-type(4) {
+  left: 40px;
+  bottom: 2%;
+}
+.level:nth-of-type(5) {
+  left: -40px;
+  top: 25%;
+}
+@keyframes rotate {
+  to {
+    transform: rotate(360deg);
+  }
+}
+#heading {
+  position: absolute;
+  z-index: 10;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+#heading h2 {
+  font-size: 4rem;
+  font-family: "Emilys Candy", cursive;
+}
+#heading p {
+  font-size: 1.5rem;
+}
+#heading h1 {
+  line-height: 5rem;
+  font-size: 8rem;
+  font-family: "Rubik Moonrocks", cursive;
+}

@@ -32,7 +32,7 @@ app.post("/levels", async (req, res) => {
   const currentLevel = await Level.find({ locked: false });
   const nextLevel = await Level.find({ number: currentLevel[0].number + 1 });
   nextLevel.locked = false;
-  await nextLevel.save();
+//   await nextLevel.save();
   res.redirect(`/levels/${nextLevel[0]._id}`);
 });
 app.get("/levels/:id", async (req, res) => {
