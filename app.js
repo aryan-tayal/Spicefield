@@ -3,6 +3,7 @@ const app = express();
 const ejsMate = require("ejs-mate");
 const mongoose = require("mongoose");
 const Level = require("./Level");
+const levelInfo = require("./seeds/levelInfo");
 
 mongoose.connect("mongodb://localhost:27017/kajam-game");
 
@@ -29,11 +30,18 @@ app.get("/levels", async (req, res) => {
   res.render("levels/index", { levels });
 });
 app.post("/levels", async (req, res) => {
-  const currentLevel = await Level.find({ locked: false });
-  const nextLevel = await Level.find({ number: currentLevel[0].number + 1 });
-  nextLevel.locked = false;
-//   await nextLevel.save();
-  res.redirect(`/levels/${nextLevel[0]._id}`);
+  const currentLevel = await Level.findById(req.body.levelId);
+  if (levelInfo.length === currentLevel.number) {
+    res.redirect("/gamewon");
+  } else {
+    const nextLevel = await Level.findOneAndUpdate(
+      {
+        number: currentLevel.number + 1,
+      },
+      { locked: false }
+    );
+    res.redirect(`/levels/${nextLevel._id}`);
+  }
 });
 app.get("/levels/:id", async (req, res) => {
   const level = await Level.findById(req.params.id);

@@ -5,12 +5,13 @@
 </div>
 <div class="grid" style="--r: <%= level.grid %>"></div>
 <div id="timer">
-    <div id="timerText"></div>
+  <div id="timerText"></div>
 </div>
 <div id="winModal" class="modal">
   <h3>You Won</h3>
   <p>Good job</p>
   <form action="/levels" method="POST">
+    <input type="text" name="levelId" value="<%= level._id %>" />
     <button id="winModalButton">Next Level</button>
   </form>
 </div>
