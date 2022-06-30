@@ -148,7 +148,7 @@ h2 {
   font-size: 1.5rem;
   cursor: pointer;
   border: none;
-  transition:box-shadow 0.3s ease;
+  transition: box-shadow 0.3s ease;
 }
 .modal button:hover {
   box-shadow: 0 0 10px 0 #ce1483;
@@ -185,4 +185,27 @@ h2 {
   transform: rotate(-45deg);
   margin-right: 30px;
   margin-bottom: 30px;
+}
+#home {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background-color: #fff;
+  color: #ce1483;
+  text-shadow: 0 0 10px #ce1483;
+  width: 150px;
+  height: 150px;
+  border-bottom-left-radius: 50rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#home img {
+  transform: rotate(45deg);
+  margin-left: 30px;
+  margin-bottom: 30px;
+  height: 2rem;
+  filter: invert(15%) sepia(100%) saturate(5540%) hue-rotate(315deg)
+    brightness(87%) contrast(89%);
+  cursor: pointer;
 }
