@@ -33,6 +33,17 @@ const createGrid = () => {
 
 createGrid();
 
+let timerValue = time;
+let x = setInterval(function () {
+  document.getElementById("timerText").innerHTML = timerValue;
+  if (timerValue === 0) {
+    clearInterval(x);
+    document.getElementById("timerText").innerHTML = "0";
+    gameOver("lost");
+  }
+  timerValue--;
+}, 1000);
+
 lostModalButton.addEventListener("click", () => window.location.reload());
 
 const gameOver = (result) => {
@@ -42,25 +53,11 @@ const gameOver = (result) => {
     console.log("game lost");
     lostModal.classList.add("show");
   } else if (result === "won") {
+    clearInterval(x);
     console.log("game won");
     winModal.classList.add("show");
   }
 };
-
-const createTimer = () => {
-  let timerValue = time;
-  let x = setInterval(function () {
-    document.getElementById("timerText").innerHTML = timerValue;
-    if (timerValue === 0) {
-      clearInterval(x);
-      document.getElementById("timerText").innerHTML = "0";
-      gameOver("lost");
-    }
-    timerValue--;
-  }, 1000);
-};
-
-createTimer();
 
 const correctClick = (c) => {
   c.classList.add("clicked");
