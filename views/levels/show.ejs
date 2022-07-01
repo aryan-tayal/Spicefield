@@ -14,8 +14,7 @@
   <div class="modal-body">
     <h3>You Won</h3>
     <p>Good job</p>
-    <form action="/levels" method="POST">
-      <input type="text" name="levelId" value="<%= level._id %>" />
+    <form action="/levels/<%= level._id %>" method="POST">
       <button id="winModalButton">Next Level</button>
     </form>
   </div>

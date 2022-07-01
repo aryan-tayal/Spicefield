@@ -8,6 +8,10 @@ const LevelSchema = new Schema({
   correct: Array,
   time: Number,
   locked: Boolean,
+  user: {
+    type: Schema.Types.ObjectId,
+    ref: "User",
+  },
 });
 
 module.exports = mongoose.model("Level", LevelSchema);

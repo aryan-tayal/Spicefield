@@ -25,8 +25,8 @@ app.use(express.urlencoded({ extended: true }));
 app.use(session({ secret: "notagoodsecret" }));
 app.use("/levels", (req, res, next) => {
   if (!req.session.user_id) {
-    res.redirect("/login");
-    next();
+    res.redirect("/signup");
+    // next();
   } else next();
 });
 
@@ -35,24 +35,30 @@ app.get("/", (req, res) => {
 });
 
 app.get("/levels", async (req, res) => {
-  const levels = await Level.find({});
+  const user = await User.findById(req.session.user_id).populate("levels");
+  const levels = user.levels;
+  console.log(user, levels);
+
   res.render("levels/index", { levels });
 });
-app.post("/levels", async (req, res) => {
-  const currentLevel = await Level.findById(req.body.levelId);
+app.post("/levels/:id", async (req, res) => {
+  const currentLevel = await Level.findById(req.params.id);
   if (levelInfo.length === currentLevel.number) {
     res.redirect("/gamewon");
   } else {
     const nextLevel = await Level.findOneAndUpdate(
       {
         number: currentLevel.number + 1,
+        user: req.session.user_id,
       },
+
       { locked: false }
     );
     res.redirect(`/levels/${nextLevel._id}`);
   }
 });
 app.get("/levels/:id", async (req, res) => {
+  const user = await User.findById(req.session.user_id).populate("levels");
   const level = await Level.findById(req.params.id);
   res.render("levels/show", { level });
 });
@@ -65,6 +71,19 @@ app.post("/signup", async (req, res) => {
     res.redirect("/signup?error=true");
   else {
     const user = new User({ username: req.body.username, progress: 1 });
+    for (let i = 0; i < levelInfo.length; i++) {
+      const level = new Level({
+        number: i + 1,
+        difficulty: Math.floor(Math.random() * 100) + 1,
+        grid: levelInfo[i].grid,
+        correct: levelInfo[i].correct,
+        time: levelInfo[i].time,
+        locked: levelInfo[i].locked,
+        user: user._id,
+      });
+      user.levels.push(level);
+      await level.save();
+    }
     await user.save();
     req.session.user_id = user._id;
     res.redirect("/levels");

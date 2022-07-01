@@ -7,10 +7,12 @@ const UserSchema = new Schema({
     required: true,
     unique: true,
   },
-  progress: {
-    type: Number,
-    default: 1,
-  },
+  levels: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "Level",
+    },
+  ],
 });
 
 module.exports = mongoose.model("User", UserSchema);
