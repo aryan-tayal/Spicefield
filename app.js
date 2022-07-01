@@ -5,6 +5,7 @@ const mongoose = require("mongoose");
 const Level = require("./Level");
 const User = require("./User");
 const levelInfo = require("./seeds/levelInfo");
+const session = require("express-session");
 
 mongoose.connect("mongodb://localhost:27017/kajam-game");
 
@@ -21,6 +22,13 @@ app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
 app.use(express.static(path.join(__dirname, "public")));
 app.use(express.urlencoded({ extended: true }));
+app.use(session({ secret: "notagoodsecret" }));
+app.use("/levels", (req, res, next) => {
+  if (!req.session.user_id) {
+    res.redirect("/login");
+    next();
+  } else next();
+});
 
 app.get("/", (req, res) => {
   res.render("home");
@@ -58,6 +66,7 @@ app.post("/signup", async (req, res) => {
   else {
     const user = new User({ username: req.body.username, progress: 1 });
     await user.save();
+    req.session.user_id = user._id;
     res.redirect("/levels");
   }
 });
