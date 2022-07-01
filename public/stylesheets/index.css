@@ -11,13 +11,13 @@ body {
   height: 80vh;
   width: 80vh;
   border-radius: 50rem;
-  border: 1px solid #fff;
+  border: 1px solid #152614;
   animation: rotate 5s ease infinite;
 }
 .level {
   position: absolute;
-  background-color: #ffffffb9;
-  border: 1px #fff solid;
+  background-color: #15261499;
+  border: 1px #152614 solid;
   backdrop-filter: blur(4px);
   display: inline-block;
   font-size: 2rem;
@@ -32,9 +32,9 @@ body {
 .level a {
   display: block;
   padding: 30px 40px;
-  font-family: "Emilys Candy", cursive;
-  color: #ce1483;
-  text-shadow: 0 0 10px #ce1483;
+  font-family: "Abril Fatface", cursive;
+  color: #fff;
+  text-shadow: 0 0 10px #fff;
   text-decoration: none;
 }
 
@@ -73,7 +73,7 @@ body {
 }
 #heading h2 {
   font-size: 4rem;
-  font-family: "Emilys Candy", cursive;
+  font-family: "Abril Fatface", cursive;
 }
 #heading p {
   font-size: 1.5rem;

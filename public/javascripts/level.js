@@ -38,14 +38,16 @@ const createGrid = () => {
     i <= new Array(parseInt(gridNumber * gridNumber)).length;
     i++
   ) {
-    let candy = document.createElement("div");
-    candy.classList.add("candy");
-    if (correctNumbers.includes(i)) candy.classList.add("correct");
-    for (let j = 0; j < new Array(4).length; j++) {
-      candy.innerHTML += '<div class="red"></div>';
-    }
-    candy.innerHTML += '<div class="overlay"></div>';
-    grid.appendChild(candy);
+    let chili = document.createElement("div");
+
+    chili.classList.add("chili");
+    if (correctNumbers.includes(i)) chili.classList.add("correct");
+    // for (let j = 0; j < new Array(4).length; j++) {
+    //   chili.innerHTML += '<div class="red"></div>';
+    // }
+    chili.innerHTML = '<img src="/imgs/chili.png"/>';
+    chili.innerHTML += '<div class="overlay"></div>';
+    grid.appendChild(chili);
   }
   bgAudio.currentTime = 0;
   bgAudio.play();
@@ -93,6 +95,7 @@ const correctClick = (c) => {
 
 Array.from(document.querySelectorAll(".correct")).map((c) => {
   const img = document.createElement("img");
+  img.classList.add('smudge');
   img.src = srcs[Math.floor(Math.random() * srcs.length)];
   img.style.top = `${Math.floor(Math.random() * 80) - 40}%`;
   img.style.left = `${Math.floor(Math.random() * 80) - 40}%`;
@@ -102,7 +105,7 @@ Array.from(document.querySelectorAll(".correct")).map((c) => {
   c.addEventListener("click", () => correctClick(c));
 });
 
-Array.from(document.querySelectorAll(".candy")).map((c) => {
+Array.from(document.querySelectorAll(".chili")).map((c) => {
   if (!c.classList.contains("correct")) {
     c.addEventListener("click", () => {
       wrongAudio.play();

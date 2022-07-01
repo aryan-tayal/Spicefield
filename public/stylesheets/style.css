@@ -1,7 +1,8 @@
-@import url("https://fonts.googleapis.com/css2?family=Emilys+Candy&family=Life+Savers:wght@400;800&family=Rubik+Moonrocks&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Kanit:wght@300;700&family=Rubik+Moonrocks&display=swap");
 * {
   margin: 0;
-  font-family: "Life Savers", sans-serif;
+  font-family: "Kanit", sans-serif;
+  color: #fff;
 }
 body {
   height: 100vh;

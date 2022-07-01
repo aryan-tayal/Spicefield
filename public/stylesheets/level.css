@@ -5,7 +5,7 @@ body {
   justify-content: space-evenly;
 }
 h1 {
-  font-family: "Emilys Candy", cursive;
+  font-family: "Abril Fatface", cursive;
   font-size: 6rem;
 }
 h2 {
@@ -20,19 +20,28 @@ h2 {
   place-items: center;
   align-content: center;
 }
-.candy {
+.chili {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   cursor: pointer;
-  --d: calc(var(--s) - 2vh);
-  height: var(--d);
-  width: var(--d);
+  height: var(--s);
+  width: var(--s);
   border-radius: 50rem;
-  background-color: #f7f7f7;
   position: relative;
   overflow: hidden;
-  box-shadow: inset 6px 5px 5px 2px rgba(255, 255, 255, 0.25),
-    inset 4px 2px 5px 0px rgba(2, 99, 116, 0.39),
-    2px 1px 2px 1px rgba(0, 0, 0, 0.57), 1px 1px 2px 1px #fff;
-  animation: rotate 0.8s linear infinite;
+  animation: shake 0.8s linear infinite;
+}
+.chili img {
+  --d: calc(var(--s) - 8vh);
+  height: var(--d);
+}
+.chili .smudge {
+  opacity: 0.3;
+  display: none;
+  position: absolute;
+  background-blend-mode: lighten;
+  z-index: 3;
 }
 .overlay {
   position: absolute;
@@ -41,71 +50,52 @@ h2 {
   left: 0;
   height: 100%;
   width: 100%;
-  background-color: #e4c1f9;
+  background-color: #152614;
   opacity: 0;
   transition: opacity 0.2s ease;
 }
-.candy.clicked {
-  animation: rotate 0.8s linear infinite, pulse 0.3s linear 1;
+.chili.clicked {
+  animation: shake 0.8s linear infinite, pulse 0.3s linear 1;
 }
-.candy.clicked .overlay {
+.chili.clicked .overlay {
   opacity: 1;
 }
-.red:nth-of-type(1) {
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 0;
-  height: 0;
-  border-left: calc(var(--d) / 5) solid transparent;
-  border-right: calc(var(--d) / 5) solid transparent;
-  border-bottom: calc(var(--d) / 2) solid #ef3054;
-}
-.red:nth-of-type(2) {
-  position: absolute;
-  right: 0;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 0;
-  height: 0;
-  border-top: calc(var(--d) / 5) solid transparent;
-  border-bottom: calc(var(--d) / 5) solid transparent;
-  border-right: calc(var(--d) / 2) solid #ef3054;
-}
-.red.red:nth-of-type(3) {
-  position: absolute;
-  top: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 0;
-  height: 0;
-  border-left: calc(var(--d) / 5) solid transparent;
-  border-right: calc(var(--d) / 5) solid transparent;
-  border-top: calc(var(--d) / 2) solid #ef3054;
-}
-.red:nth-of-type(4) {
-  position: absolute;
-  left: 0;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 0;
-  height: 0;
-  border-top: calc(var(--d) / 5) solid transparent;
-  border-bottom: calc(var(--d) / 5) solid transparent;
-  border-left: calc(var(--d) / 2) solid #ef3054;
-}
-.correct img {
-  position: absolute;
-  z-index: 5;
-  height: 150px;
-  mix-blend-mode: lighten;
-}
-@keyframes rotate {
-  to {
-    transform: rotate(360deg);
+@keyframes shake {
+  0% {
+    transform: translate(1px, 1px) rotate(0deg);
+  }
+  10% {
+    transform: translate(-1px, -2px) rotate(-1deg);
+  }
+  20% {
+    transform: translate(-3px, 0px) rotate(1deg);
+  }
+  30% {
+    transform: translate(3px, 2px) rotate(0deg);
+  }
+  40% {
+    transform: translate(1px, -1px) rotate(1deg);
+  }
+  50% {
+    transform: translate(-1px, 2px) rotate(-1deg);
+  }
+  60% {
+    transform: translate(-3px, 1px) rotate(0deg);
+  }
+  70% {
+    transform: translate(3px, 1px) rotate(-1deg);
+  }
+  80% {
+    transform: translate(-1px, -1px) rotate(1deg);
+  }
+  90% {
+    transform: translate(1px, 2px) rotate(0deg);
+  }
+  100% {
+    transform: translate(1px, -2px) rotate(-1deg);
   }
 }
+
 @keyframes pulse {
   40% {
     transform: scale(1.4);
@@ -131,9 +121,9 @@ h2 {
   text-align: center;
 }
 .modal-body h3 {
-  font-family: "Emilys Candy", cursive;
-  color: #ce1483;
-  text-shadow: 0 0 10px #ce1483;
+  font-family: "Abril Fatface", cursive;
+  color: #fff;
+  text-shadow: 0 0 10px #fff;
   font-size: 4.5rem;
 }
 .modal p {
@@ -142,9 +132,9 @@ h2 {
   font-weight: 800;
 }
 .modal button {
-  background-color: #ce1483;
+  background-color: #fff;
   border-radius: 1rem;
-  color: #fff;
+  color: #152614;
   padding: 10px 20px;
   font-size: 1.5rem;
   cursor: pointer;
@@ -152,7 +142,7 @@ h2 {
   transition: box-shadow 0.3s ease;
 }
 .modal button:hover {
-  box-shadow: 0 0 10px 0 #ce1483;
+  box-shadow: 0 0 10px 0 #fff;
 }
 .modal.show {
   opacity: 1;
@@ -170,9 +160,9 @@ h2 {
   position: absolute;
   top: 0;
   left: 0;
-  background-color: #fff;
-  color: #ce1483;
-  text-shadow: 0 0 10px #ce1483;
+  background-color: #152614;
+  color: #fff;
+  text-shadow: 0 0 10px #fff;
   width: 150px;
   height: 150px;
   border-bottom-right-radius: 50rem;
@@ -191,9 +181,9 @@ h2 {
   position: absolute;
   top: 0;
   right: 0;
-  background-color: #fff;
-  color: #ce1483;
-  text-shadow: 0 0 10px #ce1483;
+  background-color: #152614;
+  color: #fff;
+  text-shadow: 0 0 10px #fff;
   width: 150px;
   height: 150px;
   border-bottom-left-radius: 50rem;
@@ -206,7 +196,6 @@ h2 {
   margin-left: 30px;
   margin-bottom: 30px;
   height: 2rem;
-  filter: invert(15%) sepia(100%) saturate(5540%) hue-rotate(315deg)
-    brightness(87%) contrast(89%);
+  filter: invert(100%);
   cursor: pointer;
 }
