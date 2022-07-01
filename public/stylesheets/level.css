@@ -13,15 +13,16 @@ h2 {
   text-align: center;
 }
 .grid {
+  --s: calc(70vh / var(--r));
   display: grid;
-  grid-template-columns: repeat(var(--r), 20vh);
-  grid-template-rows: repeat(var(--r), 20vh);
+  grid-template-columns: repeat(var(--r), var(--s));
+  grid-template-rows: repeat(var(--r), var(--s));
   place-items: center;
   align-content: center;
 }
 .candy {
   cursor: pointer;
-  --d: 18vh;
+  --d: calc(var(--s) - 2vh);
   height: var(--d);
   width: var(--d);
   border-radius: 50rem;
