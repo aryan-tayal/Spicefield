@@ -3,6 +3,7 @@ const app = express();
 const ejsMate = require("ejs-mate");
 const mongoose = require("mongoose");
 const Level = require("./Level");
+const User = require("./User");
 const levelInfo = require("./seeds/levelInfo");
 
 mongoose.connect("mongodb://localhost:27017/kajam-game");
@@ -46,6 +47,19 @@ app.post("/levels", async (req, res) => {
 app.get("/levels/:id", async (req, res) => {
   const level = await Level.findById(req.params.id);
   res.render("levels/show", { level });
+});
+
+app.get("/signup", async (req, res) => {
+  res.render("user/signup", { error: req.query.error });
+});
+app.post("/signup", async (req, res) => {
+  if (await User.findOne({ username: req.body.username }))
+    res.redirect("/signup?error=true");
+  else {
+    const user = new User({ username: req.body.username, progress: 1 });
+    await user.save();
+    res.redirect("/levels");
+  }
 });
 
 app.listen(3000, () => {
