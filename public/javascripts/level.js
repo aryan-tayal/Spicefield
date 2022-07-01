@@ -2,6 +2,24 @@ const grid = document.querySelector(".grid");
 const winModal = document.querySelector("#winModal");
 const lostModal = document.querySelector("#lostModal");
 const winModalButton = document.querySelector("#winModalButton");
+const correctAudio = document.querySelector("#correctAudio");
+const wrongAudio = document.querySelector("#wrongAudio");
+const bgAudio = document.querySelector("#bgAudio");
+
+bgAudio.volume = 0.5;
+
+Audio.prototype.play = (function (play) {
+  return function () {
+    var audio = this,
+      args = arguments,
+      promise = play.apply(audio, args);
+    if (promise !== undefined) {
+      promise.catch((_) => {
+        // Autoplay was prevented. This is optional, but add a button to start playing.
+      });
+    }
+  };
+})(Audio.prototype.play);
 
 const srcs = [
   "/imgs/foot-both.png",
@@ -29,6 +47,8 @@ const createGrid = () => {
     candy.innerHTML += '<div class="overlay"></div>';
     grid.appendChild(candy);
   }
+  bgAudio.currentTime = 0;
+  bgAudio.play();
 };
 
 createGrid();
@@ -61,6 +81,8 @@ const gameOver = (result) => {
 
 const correctClick = (c) => {
   c.classList.add("clicked");
+  correctAudio.play();
+  correctAudio.currentTime = 0;
   if (
     Array.from(document.querySelectorAll(".clicked")).length ===
     correctNumbers.length
@@ -78,4 +100,13 @@ Array.from(document.querySelectorAll(".correct")).map((c) => {
 
   c.appendChild(img);
   c.addEventListener("click", () => correctClick(c));
+});
+
+Array.from(document.querySelectorAll(".candy")).map((c) => {
+  if (!c.classList.contains("correct")) {
+    c.addEventListener("click", () => {
+      wrongAudio.play();
+      wrongAudio.currentTime = 0;
+    });
+  }
 });

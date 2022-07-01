@@ -26,7 +26,6 @@ app.use(session({ secret: "notagoodsecret" }));
 app.use("/levels", (req, res, next) => {
   if (!req.session.user_id) {
     res.redirect("/signup");
-    // next();
   } else next();
 });
 
@@ -58,7 +57,6 @@ app.post("/levels/:id", async (req, res) => {
   }
 });
 app.get("/levels/:id", async (req, res) => {
-  const user = await User.findById(req.session.user_id).populate("levels");
   const level = await Level.findById(req.params.id);
   res.render("levels/show", { level });
 });
