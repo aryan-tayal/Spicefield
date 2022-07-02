@@ -2,9 +2,9 @@ const express = require("express");
 const app = express();
 const ejsMate = require("ejs-mate");
 const mongoose = require("mongoose");
-const Level = require("./Level");
-const User = require("./User");
-const levelInfo = require("./seeds/levelInfo");
+const Level = require("./models/Level");
+const User = require("./models/User");
+const levelInfo = require("./levelInfo");
 const session = require("express-session");
 
 mongoose.connect(
