@@ -66,11 +66,11 @@ app.post("/", async (req, res) => {
   if (await User.findOne({ username: req.body.username }))
     res.redirect("/?error=true");
   else {
-    const user = new User({ username: req.body.username, progress: 1 });
+    const user = new User({ username: req.body.username });
     for (let i = 0; i < levelInfo.length; i++) {
       const level = new Level({
         number: i + 1,
-        difficulty: Math.floor(Math.random() * 100) + 1,
+        difficulty: levelInfo[i].difficulty,
         grid: levelInfo[i].grid,
         correct: levelInfo[i].correct,
         time: levelInfo[i].time,

@@ -46,7 +46,7 @@ const createGrid = () => {
     grid.appendChild(chili);
   }
   bgAudio.currentTime = 0;
-  // bgAudio.play();
+  bgAudio.play();
 };
 
 createGrid();
