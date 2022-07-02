@@ -4,8 +4,70 @@
   font-family: "Kanit", sans-serif;
   color: #fff;
 }
-body {
+body,
+.loader {
   height: 100vh;
   background-image: url("/imgs/bg.svg");
   background-repeat: no-repeat;
+}
+.loader {
+  width: 100vw;
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  top: 0;
+  left: 0;
+}
+.loader.hide {
+  opacity: 0;
+  pointer-events: none;
+}
+.loader-content {
+  text-align: center;
+}
+.loader-chili {
+  position: relative;
+  height: 150px;
+  width: 180px;
+  margin: auto;
+  margin-bottom: 50px;
+  transform-origin: bottom;
+  overflow: hidden;
+}
+.loader-chili::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: #db5c08;
+  animation: slide 3s ease infinite alternate;
+  transform-origin: top;
+}
+.loader-chili img {
+  height: 100%;
+  animation: move 0.2s linear infinite alternate;
+}
+.loader-text {
+  font-size: 2rem;
+  font-family: "Abril Fatface";
+}
+@keyframes slide {
+  90% {
+    transform: scaleY(0);
+  }
+  100% {
+    transform: scaleY(0);
+  }
+}
+@keyframes move {
+  from {
+    transform: translateX(-20px);
+  }
+  to {
+    transform: translateX(20px);
+  }
 }

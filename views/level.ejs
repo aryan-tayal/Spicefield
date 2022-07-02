@@ -36,6 +36,14 @@
       <button id="lostModalButton">Retry</button>
     </div>
   </div>
+  <div class="loader">
+    <div class="loader-content">
+    <div class="loader-chili">
+      <img src="/imgs/chili.png" alt="">
+    </div>
+    <p class="loader-text">Hold your chillies!<br/> Hot page coming through!</p>
+  </div>
+  </div>
   <audio src="/audios/bg.mp3" id="bgAudio"></audio>
   <audio src="/audios/correct.mp3" id="correctAudio"></audio>
   <audio src="/audios/wrong.mp3" id="wrongAudio"></audio>
@@ -47,6 +55,7 @@
   const correct = "<%- level.correct %>";
   const time = "<%- level.time %>";
 </script>
+<script src="/javascripts/script.js"></script>
 <script src="/javascripts/level.js"></script>
 </body>
 </html>
