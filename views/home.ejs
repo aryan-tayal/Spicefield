@@ -38,12 +38,14 @@
       </p>
     </div>
 
-    <form action="signup" method="POST">
+    <form action="/" method="POST">
       <div class="input-group">
         <input type="text" name="username" placeholder="Username" />
         <button>Lets Go</button>
       </div>
+      <% if (error) { %>
       <div id="error">Username already taken!</div>
+      <% } %>
     </form>
   </body>
 </html>

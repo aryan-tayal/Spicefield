@@ -1,9 +1,7 @@
 <%layout('layouts/boilerplate')%>
 
 <h1>Signup</h1>
-<% if (error) { %>
-<div id="error">Username already taken</div>
-<% } %>
+
 <form action="signup" method="POST">
   <input type="text" name="username" placeholder="Username" />
   <button>Lets Go</button>

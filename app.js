@@ -22,15 +22,15 @@ app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
 app.use(express.static(path.join(__dirname, "public")));
 app.use(express.urlencoded({ extended: true }));
-app.use(session({ secret: "notagoodsecret" }));
+app.use(session({ secret: "spicefarm" }));
 app.use("/levels", (req, res, next) => {
   if (!req.session.user_id) {
-    res.redirect("/signup");
+    res.redirect("/");
   } else next();
 });
 
-app.get("/", (req, res) => {
-  res.render("home");
+app.get("/", async (req, res) => {
+  res.render("home", { error: req.query.error });
 });
 
 app.get("/levels", async (req, res) => {
@@ -62,12 +62,9 @@ app.get("/levels/:id", async (req, res) => {
   res.render("levels/show", { level });
 });
 
-app.get("/signup", async (req, res) => {
-  res.render("user/signup", { error: req.query.error });
-});
-app.post("/signup", async (req, res) => {
+app.post("/", async (req, res) => {
   if (await User.findOne({ username: req.body.username }))
-    res.redirect("/signup?error=true");
+    res.redirect("/?error=true");
   else {
     const user = new User({ username: req.body.username, progress: 1 });
     for (let i = 0; i < levelInfo.length; i++) {
