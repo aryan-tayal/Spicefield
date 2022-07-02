@@ -38,7 +38,7 @@ app.get("/", async (req, res) => {
 app.get("/levels", async (req, res) => {
   const user = await User.findById(req.session.user_id).populate("levels");
   const levels = user.levels;
-  res.render("levels/index", { levels });
+  res.render("index", { levels });
 });
 app.post("/levels/:id", async (req, res) => {
   const currentLevel = await Level.findByIdAndUpdate(req.params.id, {
@@ -61,7 +61,7 @@ app.post("/levels/:id", async (req, res) => {
 });
 app.get("/levels/:id", async (req, res) => {
   const level = await Level.findById(req.params.id);
-  res.render("levels/show", { level });
+  res.render("level", { level });
 });
 
 app.post("/", async (req, res) => {
@@ -94,7 +94,7 @@ app.get("/gamewon", async (req, res) => {
     user: req.session.user_id,
   });
   if (lastLevel && lastLevel.completed) {
-    res.render("game-helpers/gamewon");
+    res.render("gamewon");
   } else {
     res.redirect("/levels");
   }
