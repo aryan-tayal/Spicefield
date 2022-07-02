@@ -37,10 +37,13 @@ h2 {
   height: var(--d);
 }
 .chili .smudge {
-  opacity: 0.3;
-  display: none;
   position: absolute;
-  background-blend-mode: lighten;
+  mix-blend-mode: darken;
+  height: calc(var(--s) / 3);
+  width: calc(var(--s) / 3);
+  top: 40%;
+  left: 35%;
+  filter: brightness(130%);
   z-index: 3;
 }
 .overlay {
