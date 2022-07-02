@@ -1,0 +1,43 @@
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.fireworks {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  z-index: -1;
+}
+.fireworks:nth-of-type(1) {
+  left: 0;
+}
+.fireworks:nth-of-type(2) {
+  right: 0;
+}
+#heading {
+  text-align: center;
+}
+#heading h2 {
+  font-size: 4rem;
+  font-family: "Abril Fatface", cursive;
+}
+#heading p {
+  font-size: 1.5rem;
+}
+#heading h1 {
+  line-height: 7rem;
+  font-size: 8rem;
+  font-family: "Rubik Moonrocks", cursive;
+}
+img {
+  position: absolute;
+  height: 150px;
+  bottom: 10px;
+  animation: bounce 1s ease infinite alternate;
+}
+@keyframes bounce {
+  to {
+    transform: translateY(-50px);
+  }
+}

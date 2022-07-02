@@ -36,12 +36,13 @@ app.get("/", (req, res) => {
 app.get("/levels", async (req, res) => {
   const user = await User.findById(req.session.user_id).populate("levels");
   const levels = user.levels;
-  console.log(user, levels);
-
   res.render("levels/index", { levels });
 });
 app.post("/levels/:id", async (req, res) => {
-  const currentLevel = await Level.findById(req.params.id);
+  const currentLevel = await Level.findByIdAndUpdate(req.params.id, {
+    completed: true,
+  });
+
   if (levelInfo.length === currentLevel.number) {
     res.redirect("/gamewon");
   } else {
@@ -77,6 +78,7 @@ app.post("/signup", async (req, res) => {
         correct: levelInfo[i].correct,
         time: levelInfo[i].time,
         locked: levelInfo[i].locked,
+        completed: false,
         user: user._id,
       });
       user.levels.push(level);
@@ -84,6 +86,17 @@ app.post("/signup", async (req, res) => {
     }
     await user.save();
     req.session.user_id = user._id;
+    res.redirect("/levels");
+  }
+});
+app.get("/gamewon", async (req, res) => {
+  const lastLevel = await Level.findOne({
+    number: levelInfo.length,
+    user: req.session.user_id,
+  });
+  if (lastLevel && lastLevel.completed) {
+    res.render("game-helpers/gamewon");
+  } else {
     res.redirect("/levels");
   }
 });

@@ -65,14 +65,10 @@ let x = setInterval(function () {
 lostModalButton.addEventListener("click", () => window.location.reload());
 
 const gameOver = (result) => {
-  console.log("game over");
-  console.log(result);
   if (result === "lost") {
-    console.log("game lost");
     lostModal.classList.add("show");
   } else if (result === "won") {
     clearInterval(x);
-    console.log("game won");
     winModal.classList.add("show");
   }
 };

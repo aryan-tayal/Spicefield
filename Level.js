@@ -8,6 +8,7 @@ const LevelSchema = new Schema({
   correct: Array,
   time: Number,
   locked: Boolean,
+  completed: Boolean,
   user: {
     type: Schema.Types.ObjectId,
     ref: "User",
