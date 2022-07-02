@@ -1,0 +1,73 @@
+#heading {
+  text-align: center;
+}
+#heading h2 {
+  font-size: 4rem;
+  font-family: "Abril Fatface", cursive;
+}
+#heading p {
+  font-size: 1.5rem;
+}
+#heading h1 {
+  line-height: 8rem;
+  font-size: 8rem;
+  font-family: "Rubik Moonrocks", cursive;
+}
+#story {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 50px;
+}
+#story p {
+  font-size: 1.4rem;
+  font-weight: 400;
+  position: relative;
+  color: #152614;
+}
+#story p img {
+  height: 3rem;
+  margin-right: 10px;
+  filter: invert(8%) sepia(7%) saturate(4555%) hue-rotate(69deg) brightness(96%)
+    contrast(88%);
+}
+form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 50px;
+}
+.input-group {
+  margin: auto;
+  display: inline-flex;
+  border-radius: 1.25rem;
+  border: 1px solid #fff;
+  overflow: hidden;
+}
+.input-group > * {
+  border: none;
+  padding: 20px;
+  font-size: 1.3rem;
+}
+.input-group input {
+  background-color: #152614;
+}
+.input-group input::placeholder {
+  color: #fff;
+}
+.input-group button {
+  border-left: 1px solid #fff;
+  background-color: #093608;
+  transition: background-color 0.3s;
+  cursor: pointer;
+}
+.input-group button:hover {
+  background-color: #152614;
+}
+#error {
+  color: #910000;
+  margin-top:10px;
+  font-weight: 800;
+}

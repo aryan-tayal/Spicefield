@@ -2,7 +2,7 @@
 
 <h1>Signup</h1>
 <% if (error) { %>
-<h2>Username already taken</h2>
+<div id="error">Username already taken</div>
 <% } %>
 <form action="signup" method="POST">
   <input type="text" name="username" placeholder="Username" />

@@ -4,9 +4,46 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>KaJam</title>
+    <title>Spicefield</title>
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+    <link rel="stylesheet" href="/stylesheets/home.css" />
   </head>
   <body>
-      <h1>KaJam</h1>
+    <div id="heading">
+      <h2>Welcome</h2>
+      <p>To</p>
+      <h1>Spicefarms</h1>
+    </div>
+    <div id="story">
+      <p>
+        <img src="/imgs/left-quote.png" /> We grow the spiciest ghost peppers to
+        create the spiciest hot sauce.
+      </p>
+      <p>
+        <img src="/imgs/left-quote.png" />However, we have been running into a
+        problem lately. Some ghost peppers get spoilt and they rot the whole
+        field.
+      </p>
+      <p>
+        <img src="/imgs/left-quote.png" />Clever person, help us by weeding them
+        out.
+      </p>
+      <p>
+        <img src="/imgs/left-quote.png" />The rotten peppers have small smudges
+        on them. Click on the rotten pepper to remove it.
+      </p>
+      <p>
+        <img src="/imgs/left-quote.png" />Remove all rotten peppers to win the
+        level.
+      </p>
+    </div>
+
+    <form action="signup" method="POST">
+      <div class="input-group">
+        <input type="text" name="username" placeholder="Username" />
+        <button>Lets Go</button>
+      </div>
+      <div id="error">Username already taken!</div>
+    </form>
   </body>
 </html>
