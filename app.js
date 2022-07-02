@@ -7,7 +7,9 @@ const User = require("./User");
 const levelInfo = require("./seeds/levelInfo");
 const session = require("express-session");
 
-mongoose.connect("mongodb://localhost:27017/kajam-game");
+mongoose.connect(
+  "mongodb+srv://aryan:spicefield@cluster0.rf2jzvq.mongodb.net/?retryWrites=true&w=majority"
+);
 
 mongoose.connection.on(
   "error",

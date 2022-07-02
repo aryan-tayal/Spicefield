@@ -8,6 +8,7 @@ body {
   top: 0;
   height: 100%;
   z-index: -1;
+  animation: none;
 }
 .fireworks:nth-of-type(1) {
   left: 0;
@@ -36,8 +37,32 @@ img {
   bottom: 10px;
   animation: bounce 1s ease infinite alternate;
 }
+#sauceTop {
+  top: 10px;
+  bottom: inherit;
+  animation: bounce-reverse 1s ease infinite alternate;
+}
 @keyframes bounce {
-  to {
+  50% {
+    transform: translateY(-50px);
+  }
+  100% {
+    transform: translateY(50px);
+  }
+}
+@keyframes bounce {
+  50% {
+    transform: translateY(-50px);
+  }
+  100% {
+    transform: translateY(50px);
+  }
+}
+@keyframes bounce-reverse {
+  50% {
+    transform: translateY(50px);
+  }
+  100% {
     transform: translateY(-50px);
   }
 }
