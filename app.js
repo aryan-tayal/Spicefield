@@ -1,6 +1,5 @@
 const express = require("express");
 const app = express();
-const ejsMate = require("ejs-mate");
 const mongoose = require("mongoose");
 const Level = require("./models/Level");
 const User = require("./models/User");
@@ -19,7 +18,6 @@ mongoose.connection.once("open", () => console.log("DB connected"));
 
 const path = require("path");
 
-app.engine("ejs", ejsMate);
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
 app.use(express.static(path.join(__dirname, "public")));
