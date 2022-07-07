@@ -41,11 +41,12 @@
     <form action="/" method="POST">
       <div class="input-group">
         <input type="text" name="username" placeholder="Username" />
-        <button>Lets Go</button>
+        <button onclick=this.classList.add(disabled)>Lets Go</button>
       </div>
       <% if (error) { %>
       <div id="error">Username already taken!</div>
       <% } %>
     </form>
+				<script src="/javascripts/script.js"></script>
   </body>
 </html>

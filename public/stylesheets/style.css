@@ -49,6 +49,7 @@ body,
 }
 .loader-chili img {
   height: 100%;
+	position: relative;
   animation: move 0.2s linear infinite alternate;
 }
 .loader-text {
@@ -70,4 +71,9 @@ body,
   to {
     transform: translateX(20px);
   }
+}
+button.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+	pointer-events:none;
 }
